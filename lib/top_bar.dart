@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:gym_app/main.dart';
 
 class TopBar extends StatelessWidget implements PreferredSizeWidget {
   const TopBar({Key? key, required AppBar appBar}) : super(key: key);

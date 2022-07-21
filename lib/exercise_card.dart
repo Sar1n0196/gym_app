@@ -156,95 +156,100 @@ class _ExerciseCardState extends State<ExerciseCard> {
   Widget build(BuildContext context) {
     // Exercise card
     return Card(
-      child: Column(
-        children: [
-          //Top row
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Header / Exercise name
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                child: ListTile(
-                  title: Text(
-                    widget._exerciseTitle,
-                    style: const TextStyle(
-                        fontSize: 30.0, fontWeight: FontWeight.bold),
-                  ),
-                  textColor: appColors["main"],
-                ),
-              ),
-
-              //Delete button
-              Container(
-                alignment: Alignment.bottomRight,
-                child: IconButton(
-                    splashRadius: 20,
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.black,
+      child: Container(
+        color: Color.fromARGB(255, 41, 45, 58),
+        child: Column(
+          children: [
+            //Top row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Header / Exercise name
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: ListTile(
+                    title: Text(
+                      widget._exerciseTitle,
+                      style: const TextStyle(
+                          fontSize: 30.0, fontWeight: FontWeight.bold),
                     ),
-                    onPressed: deleteCard),
-              ),
-            ],
-          ),
+                    textColor: Colors.redAccent,
+                  ),
+                ),
 
-          // Titles
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                "Reps",
-                style: TextStyle(color: appColors["main"]),
-              ),
-              Text("Weight", style: TextStyle(color: appColors["main"])),
-              Text("Date", style: TextStyle(color: appColors["main"])),
-            ],
-          ),
-
-          // Background of sets
-          Container(
-            decoration: BoxDecoration(
-              color: appColors["dark"],
-              borderRadius: BorderRadius.circular(7),
+                //Delete button
+                Container(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(
+                      splashRadius: 20,
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.white,
+                      ),
+                      onPressed: deleteCard),
+                ),
+              ],
             ),
-            margin: const EdgeInsets.only(left: 10, right: 10, top: 3),
 
-            // Item builder
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: widget._repCard.length,
-                itemBuilder: (BuildContext context, int index) {
-                  RepCard card = widget._repCard[index];
-                  return Dismissible(
-                    background: Card(color: appColors["highlight"],),
-                    child: card,
-                    key: UniqueKey(),
-                    onDismissed: (direction) {
-                      setState(() {
-                        LocalDatabase().deleteRepCard(widget._exerciseTitle,
-                        card.getReps(), card.getWeight(), card.getDate());
-                        widget._repCard.removeAt(index);
-                      });
-                    },
-                  );
-                }),
-          ),
-
-          // Container for button
-          Container(
-            margin: const EdgeInsets.only(right: 10),
-            alignment: Alignment.bottomRight,
-            child:
-
-                //Add button
-                FloatingActionButton.small(
-              backgroundColor: appColors["main"],
-              child: const Icon(Icons.add),
-              onPressed: _buttonPressed,
+            // Titles
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text(
+                  "Reps",
+                  style: TextStyle(color: Colors.white,),
+                ),
+                Text("Weight", style: TextStyle(color: Colors.white)),
+                Text("Date", style: TextStyle(color: Colors.white)),
+              ],
             ),
-          ),
-        ],
+
+            // Background of sets
+            Container(
+              decoration: BoxDecoration(
+                color: appColors["dark"],
+                borderRadius: BorderRadius.circular(7),
+              ),
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 3),
+
+              // Item builder
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: widget._repCard.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    RepCard card = widget._repCard[index];
+                    return Dismissible(
+                      background: Card(
+                        color: Color.fromARGB(255, 41, 45, 58),
+                      ),
+                      child: card,
+                      key: UniqueKey(),
+                      onDismissed: (direction) {
+                        setState(() {
+                          LocalDatabase().deleteRepCard(widget._exerciseTitle,
+                              card.getReps(), card.getWeight(), card.getDate());
+                          widget._repCard.removeAt(index);
+                        });
+                      },
+                    );
+                  }),
+            ),
+
+            // Container for button
+            Container(
+              margin: const EdgeInsets.only(right: 10),
+              alignment: Alignment.bottomRight,
+              child:
+
+                  //Add button
+                  FloatingActionButton.small(
+                backgroundColor: Colors.redAccent,
+                child: const Icon(Icons.add),
+                onPressed: _buttonPressed,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
