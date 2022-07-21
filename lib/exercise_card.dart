@@ -195,10 +195,7 @@ class _ExerciseCardState extends State<ExerciseCard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Text(
-                  "Reps",
-                  style: TextStyle(color: Colors.white,),
-                ),
+                Text("Reps", style: TextStyle(color: Colors.white,)),
                 Text("Weight", style: TextStyle(color: Colors.white)),
                 Text("Date", style: TextStyle(color: Colors.white)),
               ],
