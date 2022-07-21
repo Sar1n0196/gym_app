@@ -71,7 +71,7 @@ class _MyAppState extends State<MyApp> {
 
     return MaterialApp(
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
         ),
         home: Scaffold(
             backgroundColor: appColors["background"],
@@ -79,13 +79,16 @@ class _MyAppState extends State<MyApp> {
               appBar: AppBar(),
             ),
             bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Colors.black,
                 items: const [
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.emoji_events),
+                    icon: Icon(Icons.emoji_events,
+                    color: Colors.blueGrey,),
                     label: "PRs",
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.fitness_center),
+                    icon: Icon(Icons.fitness_center,
+                    color: Colors.blueGrey,),
                     label: 'Exercises',
                   ),
                 ],
